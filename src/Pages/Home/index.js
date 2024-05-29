@@ -3,6 +3,8 @@
 
 import { useEffect, useState} from "react";
 import api from '../../services/api';
+import { Link } from 'react-router-dom';
+import './home.css';
 
 
 function Home(){    
@@ -36,6 +38,8 @@ function Home(){
                     return(
                         <article key={filme.id}>
                             <strong>{filme.title}</strong>
+                            <img src={`https://image.tmdb.org/t/p/w500/${filme.poster_path}`} alt={filme.title}/>
+                            <Link to={`/filme/${filme.id}`}>Acessar</Link>
                         </article>
                     )
                 })}
