@@ -1,4 +1,5 @@
 // useEffect ciclo de vida - useState armazenar em algum estado 
+// URL da API: /movie/now_playing?api_key=1f044149653f684e988c7b4a718ca1f3&language=pt-BR
 
 import { useEffect, useState} from "react";
 import api from '../../services/api';
@@ -11,7 +12,7 @@ function Home(){
     useEffect(()=>{
 
         async function loadFilmes(){
-            const response = await api.get("movie/now_playng", {
+            const response = await api.get('/movie/now_playing', {
                 params:{
                     api_key:'1f044149653f684e988c7b4a718ca1f3',
                     language: 'pt-Br',
