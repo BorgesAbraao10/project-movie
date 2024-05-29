@@ -5,7 +5,7 @@ import './header.css';
 function Header(){
     return(
         <header>
-            <Link className='logo' to="/">Movie Flix</Link>
+            <Link className='logo' to="/">BorgesFlix</Link>
             <Link className='favoritos' to='/favoritos'>Meus Filmes</Link>
 
         </header>
