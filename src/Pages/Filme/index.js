@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './filme-info.css';
 
 import api from '../../services/api';
@@ -8,6 +8,7 @@ import api from '../../services/api';
 
 function Filme(){
     const { id } = useParams();
+    const navigate = useNavigate();
     const [filme, setFilme] = useState({});
     const [loading, setLoading] = useState(true);
 
@@ -25,7 +26,9 @@ function Filme(){
                 setLoading(false);
             })
             .catch(()=>{
-                console.log("Filme não encontrado")
+                console.log("Filme não encontrado");
+                navigate("/", { replace: true });
+                return;
             })
         }
 
@@ -33,7 +36,7 @@ function Filme(){
 
         return () =>console.log("Componente foi desmontado")
 
-    }, [])
+    }, [navigate, id]);
 
     if(loading){
         return(
@@ -47,7 +50,7 @@ function Filme(){
     return(
         <div className='filme-info'>
             <h1>{filme.title}</h1>
-            <img src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`} alt={filme.title} alt={filme.title} />
+            <img src={`https://image.tmdb.org/t/p/original/${filme.backdrop_path}`} alt={filme.title} />
 
             <h3>Sinopse</h3>
             <span>{filme.overview}</span>
@@ -56,7 +59,7 @@ function Filme(){
             <div className="area-buttons">
                 <button>Salvar</button>
                 <button>
-                    <a href='#'> 
+                    <a target="blank" href={`http://youtube.com/results?search_query=${filme.title} Trailer`}> 
                     Trailer
                     </a>
                 </button>
