@@ -43,7 +43,7 @@ function Home(){
 
     return(
         <div className="container">
-            <span>Ultimos Lançamentos</span>
+            
             <div className="lista-filmes">
                 {filmes.map((filme)=> {
                     return(
